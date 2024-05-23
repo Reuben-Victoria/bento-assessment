@@ -4,7 +4,7 @@ import "./index.css";
 
 function App() {
   return (
-    <Button variant='outlined' size='medium'>
+    <Button variant='primary' size='medium'>
       <span>Home</span>
     </Button>
   );
