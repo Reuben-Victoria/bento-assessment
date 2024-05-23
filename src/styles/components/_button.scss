@@ -1,0 +1,70 @@
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  row-gap: rem(0.25);
+  padding: rem(10) rem(20); /* Default padding */
+  border: none;
+  border-radius: rem(5);
+  font-size: rem(16);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &--primary {
+    background-color: $primary-color;
+    color: $gray-light;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  &--outlined {
+    background-color: $white;
+    font-weight: 500;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $gray-light;
+    }
+  }
+
+  &--secondary {
+    background-color: #2ecc71;
+    color: #ffffff;
+
+    &:hover {
+      background-color: #27ae60;
+    }
+  }
+
+  &--disabled {
+    background-color: $gray-dark;
+    color: $gray-light;
+    border-color: $gray-dark;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $gray-dark;
+      cursor: not-allowed;
+    }
+  }
+
+  &--small {
+    padding: rem(8) rem(16);
+    font-size: rem(14);
+  }
+
+  &--medium {
+    padding: rem(10) rem(20); /* Same as default */
+    font-size: rem(16); /* Same as default */
+  }
+
+  &--large {
+    padding: rem(15) rem(30);
+    font-size: rem(20);
+  }
+}
