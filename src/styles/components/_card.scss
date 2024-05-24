@@ -1,0 +1,103 @@
+.card {
+  @include custom-box-shadow;
+  background-color: $white;
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr);
+  width: fit-content;
+  gap: rem(8);
+  border-radius: rem(10);
+  padding: rem(16);
+  margin: 0;
+  cursor: pointer;
+  transition: scale 0.3s ease;
+
+  &:hover {
+    scale: 1.05;
+    cursor: pointer;
+  }
+
+  @include respond-to(small) {
+    .card {
+      grid-template-columns: 1fr;
+      padding: rem(8);
+    }
+    .card-title {
+      font-size: rem(16);
+    }
+    .card-author {
+      font-size: rem(12);
+    }
+  }
+
+  &-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    &-book {
+      display: grid;
+      grid-template-columns: 1;
+      column-gap: rem(12);
+    }
+    &-year {
+      margin: 0;
+      color: $gray-dark;
+      font-size: rem(12);
+    }
+  }
+
+  &-title {
+    font-size: rem(18);
+    color: $primary-dark;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  &-author {
+    font-size: rem(14);
+    color: $primary-dark;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: rem(12);
+  }
+
+  .icon-card {
+    font-size: rem(16);
+    font-weight: 500;
+  }
+
+  //   @include respond-to(medium) {
+  //     .card {
+  //       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  //       padding: rem(12);
+  //     }
+  //     .card-title {
+  //       font-size: rem(17);
+  //     }
+  //     .card-author {
+  //       font-size: rem(13);
+  //     }
+  //     .card-actions {
+  //       justify-content: space-between;
+  //     }
+  //   }
+
+  //   @include respond-to(large) {
+  //     .card {
+  //       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  //       padding: rem(14);
+  //     }
+  //     .card-title {
+  //       font-size: rem(18);
+  //     }
+  //     .card-author {
+  //       font-size: rem(14);
+  //     }
+  //   }
+}

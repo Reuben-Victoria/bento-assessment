@@ -18,3 +18,14 @@ $gray-dark: #95a5a6;
 $accent-color: #e74c3c;
 $accent-light: #f1948a;
 $accent-dark: #c0392b;
+
+//Box Shadow
+$tw-ring-offset-shadow: 0 0 $gray-dark;
+$tw-ring-shadow: 0 0 $gray-dark;
+$tw-shadow: 0 10px 15px -3px $gray-dark, 0 4px 6px -4px;
+
+//Breakpoint
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
+$breakpoint-xlarge: 1200px;
