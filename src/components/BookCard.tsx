@@ -12,13 +12,19 @@ const BookCard = () => {
         <p className="card-details-year">2023</p>
       </div>
       <div className='card-actions'>
+      
         <Button size='small' variant='primary'>
-          <Icon icon={"ph:books"} className="icon-card"/>
+        <div>
+        <Icon icon={"ph:books"} className="icon-card"/>
           <span>Read More</span>
+        </div>
         </Button>
+      
         <Button size='small' variant='outlined'>
-          <Icon icon={"ph:heart"} className="icon-card"/>
+        <div>
+        <Icon icon={"ph:heart"} className="icon-card"/>
           <span>Favorite</span>
+        </div>
         </Button>
       </div>
     </div>

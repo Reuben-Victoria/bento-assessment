@@ -1,0 +1,96 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  background-color: $white;
+  z-index: 20;
+  right: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid $gray-light;
+  padding: rem(8) rem(64);
+
+  @include respond-to(medium) {
+    padding: rem(8) rem(32);
+  }
+
+  @include respond-to(small) {
+    padding: rem(4) rem(20);
+  }
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    gap: rem(4);
+    justify-content: space-between;
+    color: $primary-dark;
+
+    h1 {
+      margin: 0;
+      font-size: x-large;
+
+      @include respond-to(medium) {
+        font-size: large;
+      }
+
+      @include respond-to(small) {
+        font-size: large;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      span {
+        color: $primary-color;
+      }
+    }
+
+    &-icon {
+      font-size: x-large;
+      width: rem(32);
+    }
+  }
+
+  &-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(32);
+
+    li {
+      display: flex;
+      align-items: center;
+      list-style: none;
+
+      span {
+        color: $primary-dark;
+        font-size: rem(16);
+        font-weight: 500;
+      }
+    }
+
+    &-cart {
+      gap: rem(8);
+      color: $primary-color;
+      align-items: start;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &-icon {
+        cursor: pointer;
+        font-size: x-large;
+
+        &:hover {
+          color: $primary-light;
+        }
+      }
+
+      span {
+        color: $primary-dark;
+        font-size: rem(16);
+        font-weight: 500;
+      }
+    }
+  }
+}
