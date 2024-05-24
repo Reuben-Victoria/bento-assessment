@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: minmax(200px, 1fr);
   width: fit-content;
+  box-sizing: border-box;
   gap: rem(8);
   border-radius: rem(10);
   padding: rem(16);
@@ -17,16 +18,19 @@
   }
 
   @include respond-to(small) {
-    .card {
-      grid-template-columns: 1fr;
-      padding: rem(8);
-    }
-    .card-title {
-      font-size: rem(16);
-    }
-    .card-author {
-      font-size: rem(12);
-    }
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: rem(8);
+  }
+
+  @include respond-to(medium) {
+    grid-template-columns: minmax(180px, 1fr);
+    padding: rem(12);
+  }
+
+  @include respond-to(large) {
+    grid-template-columns: minmax(220px, 1fr);
+    padding: rem(12);
   }
 
   &-details {
@@ -51,6 +55,18 @@
     color: $primary-dark;
     font-weight: 500;
     margin: 0;
+
+    @include respond-to(small) {
+      font-size: rem(14);
+    }
+
+    @include respond-to(medium) {
+      font-size: rem(16);
+    }
+
+    @include respond-to(large) {
+      font-size: rem(18);
+    }
   }
 
   &-author {
@@ -58,6 +74,18 @@
     color: $primary-dark;
     font-weight: 400;
     margin: 0;
+
+    @include respond-to(small) {
+      font-size: rem(12);
+    }
+
+    @include respond-to(medium) {
+      font-size: rem(14);
+    }
+
+    @include respond-to(large) {
+      font-size: rem(14);
+    }
   }
 
   &-actions {
@@ -65,39 +93,24 @@
     flex-direction: row;
     align-items: center;
     gap: rem(12);
+
+    @include respond-to(medium) {
+      justify-content: space-between;
+    }
+
+    button{
+      div{
+        display: flex;
+        margin: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: rem(8);
+      }
+    }
   }
 
   .icon-card {
-    font-size: rem(16);
+    font-size: large;
     font-weight: 500;
   }
-
-  //   @include respond-to(medium) {
-  //     .card {
-  //       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  //       padding: rem(12);
-  //     }
-  //     .card-title {
-  //       font-size: rem(17);
-  //     }
-  //     .card-author {
-  //       font-size: rem(13);
-  //     }
-  //     .card-actions {
-  //       justify-content: space-between;
-  //     }
-  //   }
-
-  //   @include respond-to(large) {
-  //     .card {
-  //       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  //       padding: rem(14);
-  //     }
-  //     .card-title {
-  //       font-size: rem(18);
-  //     }
-  //     .card-author {
-  //       font-size: rem(14);
-  //     }
-  //   }
 }

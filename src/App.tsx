@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { BookCard, Button } from "./components";
+import { BookCard, Navbar } from "./components";
 import "./index.css";
 
 function App() {
   return (
-    <BookCard/>
+    <>
+      <Navbar />
+      {/* <BookCard /> */}
+    </>
   );
 }
 
