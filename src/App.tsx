@@ -1,13 +1,13 @@
 import { Cart } from "./pages";
-import { Navbar, Search } from "@/components";
 import "./index.css";
+import { BookLayout } from "./layouts";
 
 function App() {
   return (
     <>
-      {/* <Navbar/> */}
-      <Cart />
-      <Search/>
+   <BookLayout>
+    <Cart/>
+   </BookLayout>
     </>
   );
 }

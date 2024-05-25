@@ -1,5 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap");
 html {
   font-size: 100%;
+
   font-family: "Wix Madefor Display", sans-serif;
+  --navbar-height: 80px;
+}
+
+body {
+  margin: 0;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
