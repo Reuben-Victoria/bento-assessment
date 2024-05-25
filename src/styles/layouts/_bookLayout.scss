@@ -1,0 +1,26 @@
+.book-layout {
+  position: relative;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: max-content calc(100vh - var(--navbar-height));
+  width: 100%;
+
+  &-children {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: rem(80);
+    padding-left: rem(32);
+    padding-right: rem(32);
+
+    @include respond-to(small) {
+      padding-top: rem(48);
+      overflow-y: auto;
+      padding-left: rem(4);
+      padding-right: rem(4);
+    }
+  }
+}
