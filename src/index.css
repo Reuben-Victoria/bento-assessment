@@ -1,6 +1,5 @@
-html{
-    font-size: 100%;
+@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap");
+html {
+  font-size: 100%;
+  font-family: "Wix Madefor Display", sans-serif;
 }
-
-
-

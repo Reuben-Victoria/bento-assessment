@@ -1,0 +1,116 @@
+.card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: $white;
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr);
+  width: fit-content;
+  box-sizing: border-box;
+  gap: rem(8);
+  border-radius: rem(10);
+  padding: rem(16);
+  margin: 0;
+  cursor: pointer;
+  transition: scale 0.3s ease;
+
+  &:hover {
+    scale: 1.05;
+    cursor: pointer;
+  }
+
+  @include respond-to(small) {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: rem(8);
+  }
+
+  @include respond-to(medium) {
+    grid-template-columns: minmax(180px, 1fr);
+    padding: rem(12);
+  }
+
+  @include respond-to(large) {
+    grid-template-columns: minmax(220px, 1fr);
+    padding: rem(12);
+  }
+
+  &-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    &-book {
+      display: grid;
+      grid-template-columns: 1;
+      column-gap: rem(12);
+    }
+    &-year {
+      margin: 0;
+      color: $gray-dark;
+      font-size: rem(12);
+    }
+  }
+
+  &-title {
+    font-size: rem(18);
+    color: $primary-dark;
+    font-weight: 500;
+    margin: 0;
+
+    @include respond-to(small) {
+      font-size: rem(14);
+    }
+
+    @include respond-to(medium) {
+      font-size: rem(16);
+    }
+
+    @include respond-to(large) {
+      font-size: rem(18);
+    }
+  }
+
+  &-author {
+    font-size: rem(14);
+    color: $primary-dark;
+    font-weight: 400;
+    margin: 0;
+
+    @include respond-to(small) {
+      font-size: rem(12);
+    }
+
+    @include respond-to(medium) {
+      font-size: rem(14);
+    }
+
+    @include respond-to(large) {
+      font-size: rem(14);
+    }
+  }
+
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: rem(12);
+
+    @include respond-to(medium) {
+      justify-content: space-between;
+    }
+
+    button{
+      div{
+        display: flex;
+        margin: auto;
+        flex-direction: row;
+        align-items: center;
+        gap: rem(8);
+      }
+    }
+  }
+
+  .icon-card {
+    font-size: large;
+    font-weight: 500;
+  }
+}

@@ -3,16 +3,16 @@
   flex-direction: row;
   align-items: center;
   justify-items: center;
-  row-gap: rem(0.25);
-  padding: rem(10) rem(20); /* Default padding */
+  text-align: center;
   border: none;
+  margin: auto;
   border-radius: rem(5);
-  font-size: rem(16);
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &--primary {
     background-color: $primary-color;
+    border: 1px solid $primary-color;
     color: $gray-light;
 
     &:hover {
@@ -54,17 +54,63 @@
   }
 
   &--small {
-    padding: rem(8) rem(16);
-    font-size: rem(14);
+    padding: rem(8) rem(12);
+    font-size: rem(12);
+    width: 100%;
+
+    @include respond-to(small) {
+      padding: rem(6) rem(12);
+      font-size: rem(12);
+    }
+
+    @include respond-to(medium) {
+      padding: rem(8) rem(12);
+      font-size: rem(12);
+    }
+
+    @include respond-to(large) {
+      padding: rem(10) rem(20);
+      font-size: rem(16);
+    }
   }
 
   &--medium {
-    padding: rem(10) rem(20); /* Same as default */
-    font-size: rem(16); /* Same as default */
+    padding: rem(10) rem(12); /* Same as default */
+    font-size: rem(14); /* Same as default */
+
+    @include respond-to(small) {
+      padding: rem(8) rem(12);
+      font-size: rem(14);
+    }
+
+    @include respond-to(medium) {
+      padding: rem(10) rem(12);
+      font-size: rem(14);
+    }
+
+    @include respond-to(large) {
+      padding: rem(12) rem(24);
+      font-size: rem(18);
+    }
   }
 
   &--large {
     padding: rem(15) rem(30);
     font-size: rem(20);
+
+    @include respond-to(small) {
+      padding: rem(10) rem(20);
+      font-size: rem(16);
+    }
+
+    @include respond-to(medium) {
+      padding: rem(12) rem(24);
+      font-size: rem(18);
+    }
+
+    @include respond-to(large) {
+      padding: rem(14) rem(28);
+      font-size: rem(20);
+    }
   }
 }

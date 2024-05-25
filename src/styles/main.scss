@@ -1,4 +1,8 @@
-@import "functions";
-@import "variables";
+@import "base/functions";
+@import "base/variables";
+@import "base/mixins";
 
 @import "components/button";
+@import "components/card";
+@import "components/navbar";
+@import "components/pagination"

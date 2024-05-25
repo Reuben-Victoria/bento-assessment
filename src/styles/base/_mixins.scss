@@ -1,0 +1,28 @@
+@mixin custom-box-shadow {
+  --tw-ring-offset-shadow: #{$tw-ring-offset-shadow};
+  --tw-ring-shadow: #{$tw-ring-shadow};
+  --tw-shadow: #{$tw-shadow};
+
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: $breakpoint-small) {
+      @content;
+    }
+  } @else if $breakpoint == "medium" {
+    @media (max-width: $breakpoint-medium) {
+      @content;
+    }
+  } @else if $breakpoint == "large" {
+    @media (max-width: $breakpoint-large) {
+      @content;
+    }
+  } @else if $breakpoint == "xlarge" {
+    @media (max-width: $breakpoint-xlarge) {
+      @content;
+    }
+  }
+}
