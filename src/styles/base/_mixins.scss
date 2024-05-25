@@ -7,6 +7,46 @@
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+@mixin cartitem-select {
+  position: relative;
+  border: 1px solid $gray-light;
+  width: 100%;
+  cursor: default;
+  box-sizing: border-box;
+  border-radius: rem(8);
+  background-color: $white;
+  padding: rem(4) rem(8);
+  min-width: fit-content !important;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75), 0 0 0 4px $primary-color;
+  }
+  font-size: rem(14);
+
+  @include respond-to(small) {
+    padding-left: rem(8);
+    padding-right: rem(8);
+    min-width: rem(64);
+  }
+}
+
+@mixin cartitem-button {
+  color: $primary-color;
+  border: none;
+  font-size: rem(14);
+  background-color: $white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $primary-light;
+  }
+}
+
 @mixin respond-to($breakpoint) {
   @if $breakpoint == "small" {
     @media (max-width: $breakpoint-small) {

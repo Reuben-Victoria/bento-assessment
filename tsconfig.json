@@ -26,6 +26,16 @@
       ]
     },
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src",
+    "node_modules/@types"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "rules": {
+    "no-unused-vars": "off"
+  }
 }
