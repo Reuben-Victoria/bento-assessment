@@ -1,15 +1,8 @@
-import { Cart } from "./pages";
 import "./index.css";
-import { BookLayout } from "./layouts";
+import { BookRoutes } from "./routes";
 
 function App() {
-  return (
-    <>
-   <BookLayout>
-    <Cart/>
-   </BookLayout>
-    </>
-  );
+  return <BookRoutes />;
 }
 
 export default App;
