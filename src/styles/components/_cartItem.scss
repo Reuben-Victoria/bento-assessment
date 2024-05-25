@@ -40,6 +40,7 @@
   &-details {
     display: grid;
     color: $primary-dark;
+    gap: rem(4);
 
     p {
       font-size: rem(16);
