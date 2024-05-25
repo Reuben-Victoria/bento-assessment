@@ -1,10 +1,13 @@
 import { Cart } from "./pages";
+import { Navbar, Search } from "@/components";
 import "./index.css";
 
 function App() {
   return (
     <>
-      <Cart/>
+      {/* <Navbar/> */}
+      <Cart />
+      <Search/>
     </>
   );
 }
