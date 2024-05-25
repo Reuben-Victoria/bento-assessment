@@ -1,11 +1,17 @@
-import { BookCard, Navbar } from "./components";
+import { BookCard, Navbar, Pagination } from "./components";
 import "./index.css";
 
 function App() {
   return (
     <>
-      <Navbar />
-      {/* <BookCard /> */}
+      {/* <Navbar /> */}
+      <BookCard/>
+      <Pagination
+        page={5}
+        limit={10}
+        setLimit={() => {}}
+        onPageChange={() => {}}
+      />
     </>
   );
 }

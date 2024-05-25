@@ -1,0 +1,82 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+
+  &-rows {
+    display: flex;
+    align-items: center;
+    gap: rem(4);
+  }
+
+  &-text {
+    font-size: rem(14);
+    color: $primary-dark;
+    white-space: nowrap;
+
+    @include respond-to(small) {
+      font-size: rem(12);
+    }
+  }
+
+  &-select {
+    position: relative;
+    border: 1px solid $gray-light;
+    width: 100%;
+    cursor: default;
+    border-radius: rem(8);
+    background-color: $white;
+    padding-top: rem(8);
+    padding-bottom: rem(8);
+    padding-left: rem(12);
+    padding-right: rem(40);
+    text-align: left;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    outline: none;
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75), 0 0 0 4px $primary-color;
+    }
+    font-size: rem(14);
+
+    @include respond-to(small) {
+      padding-left: rem(8);
+      padding-right: rem(8);
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+  }
+
+  &-page-info {
+    font-size: rem(14);
+    white-space: nowrap;
+    color: $primary-dark;
+
+    @include respond-to(small) {
+        font-size: rem(12);
+      }
+  }
+
+  &-button {
+    height: rem(32) !important;
+    padding-top: rem(8) !important;
+
+    @include respond-to(small) {
+
+            padding: rem(6) rem(12) !important;
+            font-size: rem(12) !important;
+          
+      
+      }
+
+    &[disabled] {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+}
