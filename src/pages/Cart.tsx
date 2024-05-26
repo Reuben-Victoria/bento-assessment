@@ -1,33 +1,77 @@
-import { Button } from "@/components";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Button, RenderIf } from "@/components";
+import book from "@/assets/book.jpeg";
+import { useCartData } from "@/context";
 import React from "react";
+import { removeDuplicatesAndAddQuantity } from "@/utils";
 interface CheckoutProps {
   description: string;
   price: number;
 }
 
-const CartItem = () => {
+interface CartItemProps {
+  name: string;
+  publisher: string;
+  removeFromCart: () => void;
+  quantity: number;
+  id: number;
+  updateQuantity: (quantity: number) => void;
+}
+
+const CartItem: React.FC<CartItemProps> = ({
+  name,
+  publisher,
+  id,
+  removeFromCart,
+  quantity,
+  updateQuantity,
+}) => {
+  const handleQuantityChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    console.log(event, "TEXT");
+    updateQuantity(Number(event.target.value));
+  };
   return (
     <div className='cartitem'>
       <div className='cartitem-container'>
         <div className='cartitem-cover'>
-          <div>Book Cover</div>
+          <img src={book} alt='book-jpeg' />
         </div>
         <div className='cartitem-responsive'>
           <div className='cartitem-details'>
-            <p>Zip Tote Basket</p>
-            <span>White and black</span>
+            <p>{name}</p>
+            <span>{publisher}</span>
           </div>
 
           <div className='cartitem-details-actions'>
-            <select />
+            <select
+              name={id.toString()}
+              value={quantity}
+              onChange={handleQuantityChange}
+            >
+              {[...Array(5)].map((_, index) => (
+                <option key={index + 1} value={index + 1}>
+                  {index + 1}
+                </option>
+              ))}
+            </select>
             <button>Remove</button>
           </div>
         </div>
       </div>
       <div className='cartitem-actions'>
-        <select />
-        <button>Remove</button>
+        <select
+          name={id.toString()}
+          value={quantity}
+          onChange={handleQuantityChange}
+        >
+          {[...Array(5)].map((_, index) => (
+            <option key={index + 1} value={index + 1}>
+              {index + 1}
+            </option>
+          ))}
+        </select>
+        <button onClick={removeFromCart}>Remove</button>
       </div>
 
       <p className='cartitem-price'>$140.00</p>
@@ -44,7 +88,9 @@ const Checkout: React.FC<CheckoutProps> = ({ description, price }) => {
   );
 };
 
-const Cart = () => {
+const Cart = ({ children }: { children: React.ReactNode }) => {
+  const { cartData, removeFromCartData, updateCartQuantity } = useCartData();
+  console.log(cartData, "CART DRA");
   const checkoutData = [
     { description: "Subtotal", price: 30 },
     { description: "Shipping", price: 40 },
@@ -54,41 +100,61 @@ const Cart = () => {
     <div className='cart'>
       <div className='cart-action'>
         <h2>
-          Shopping <span>Cart</span>
+          Shopping <span className='cart-action-label'>Bag</span>
         </h2>
-        <button>
-          <Icon icon={"ph:x"} />
-        </button>
+        {children}
       </div>
 
-      <div className='cart-items'>
-        <CartItem />
-      </div>
-
-      <div className='cart-total'>
-        <div className='cart-checkout'>
-          {checkoutData?.map((items) => {
-            const { description, price } = items;
+      <RenderIf condition={!!cartData.length}>
+        <div className='cart-items hide-scroll-bar'>
+          {removeDuplicatesAndAddQuantity(cartData)?.map((books) => {
             return (
-              <Checkout
-                description={description}
-                price={price}
-                key={description}
+              <CartItem
+                name={books?.Title}
+                publisher={books?.Publisher}
+                id={books?.id}
+                key={books?.id}
+                quantity={books.quantity!}
+                updateQuantity={(quantity) =>
+                  updateCartQuantity(books.id, quantity)
+                }
+                removeFromCart={() => removeFromCartData(books?.id)}
               />
             );
           })}
-          <div className='cart-checkout-total'>
-            <span>Order total</span>
-            <span>$131.00</span>
-          </div>
         </div>
 
-        <div className='cart-button'>
-          <Button variant='primary' size='medium'>
-            Continue to Payment
-          </Button>
+        <div className='cart-total'>
+          <div className='cart-checkout'>
+            {checkoutData?.map((items) => {
+              const { description, price } = items;
+              return (
+                <Checkout
+                  description={description}
+                  price={price}
+                  key={description}
+                />
+              );
+            })}
+            <div className='cart-checkout-total'>
+              <span>Order total</span>
+              <span>$131.00</span>
+            </div>
+          </div>
+
+          <div className='cart-button'>
+            <Button variant='primary' size='medium'>
+              Continue to Payment
+            </Button>
+          </div>
         </div>
-      </div>
+      </RenderIf>
+
+      <RenderIf condition={!cartData?.length}>
+        <p className='cart-empty'>
+          Shopping <span>Bag</span> is empty!
+        </p>
+      </RenderIf>
     </div>
   );
 };

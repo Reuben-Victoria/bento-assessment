@@ -5,7 +5,7 @@
   position: fixed;
   left: 0;
   background-color: $white;
-  z-index: 20;
+  z-index: 9999;
   right: 0;
   top: 0;
   box-sizing: border-box;
@@ -17,7 +17,7 @@
   }
 
   @include respond-to(small) {
-    padding: rem(4) rem(8);
+    padding: rem(4) rem(12);
   }
 
   &-logo {
@@ -63,28 +63,30 @@
       display: flex;
       align-items: center;
       list-style: none;
+    }
+
+    &-cart {
+      gap: rem(8);
+      display: flex;
+      align-items: center;
+      color: $primary-color;
+      font-weight: 500;
+      cursor: pointer;
+      background-color: white;
+      border: none;
+      transition: color 0.3s ease;
 
       span {
         color: $primary-dark;
         font-size: rem(16);
         font-weight: 500;
       }
-    }
-
-    &-cart {
-      gap: rem(8);
-      color: $primary-color;
-      align-items: start;
-      font-weight: 500;
-      transition: color 0.3s ease;
 
       &-icon {
         cursor: pointer;
         font-size: x-large;
 
-        &:hover {
-          color: $primary-light;
-        }
+    
       }
 
       span {
@@ -94,4 +96,13 @@
       }
     }
   }
+}
+
+.cart-overlay {
+  position: fixed;
+  top: rem(72);
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.3); // Semi-transparent background
+  backdrop-filter: blur(3px); // Adjust the blur amount as needed
+  z-index: 10; // Ensure it is behind the modal but above other content
 }

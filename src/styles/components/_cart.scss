@@ -1,38 +1,85 @@
+.cart-modal {
+  z-index: 9998;
+  position: absolute;
+  min-height: rem(580);
+  top: rem(73);
+  width: 40%;
+  right: rem(56);
+
+  @include respond-to(medium) {
+    right: 0;
+    left: 0;
+    max-width: 100%;
+    width: 100%;
+    height: fit-content;
+    bottom: 0;
+  }
+
+  @include respond-to(small) {
+    right: 0;
+    left: 0;
+    height: fit-content;
+    top: rem(65);
+    bottom: 0;
+  }
+}
+
 .cart {
   @include custom-box-shadow;
+  max-width: rem(700);
   padding: rem(32) rem(32);
-  max-width: rem(520);
+  background-color: $white;
   border: 1px solid $gray-light;
   border-radius: rem(16);
   width: 100%;
-  height: fit-content;
+  height: 100%;
   box-sizing: border-box;
   display: grid;
   gap: rem(40);
 
-  @include respond-to(small) {
+  @include respond-to(medium) {
     max-width: 100%;
-    padding: rem(16) rem(16);
+    padding: rem(20) rem(20);
+    gap: rem(36);
     border: none;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid $gray-light;
     box-shadow: none;
   }
 
-  h2 {
-    color: $primary-dark;
-    font-size: x-large;
-
-    font-weight: medium;
-    margin: 0;
-
-    span {
-      color: $primary-color;
-    }
+  @include respond-to(small) {
+    max-width: 100%;
+    gap: rem(24);
+    padding: rem(16) rem(16);
+    border: none;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid $gray-light;
+    box-shadow: none;
   }
 
   &-action {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    h2 {
+      color: $primary-dark;
+      font-size: rem(18);
+      font-weight: medium;
+      margin: 0;
+
+      span {
+        color: $primary-color;
+      }
+
+      @include respond-to(small) {
+        font-size: rem(16);
+      }
+    }
+
+    &-label {
+      color: $primary-color;
+    }
     button {
       border: 1px solid $gray-light;
       border-radius: rem(8);
@@ -83,6 +130,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: rem(12) 0;
       span {
         font-size: rem(16);
@@ -102,5 +150,26 @@
   &-total {
     display: grid;
     gap: rem(16);
+  }
+
+  &-empty {
+    color: $primary-dark;
+    padding-bottom: rem(56);
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+
+    span {
+      color: $primary-color;
+    }
+  }
+
+  &-items {
+    display: grid;
+    max-height: 36vh;
+    height: fit-content;
+    gap: rem(12);
+    padding: rem(8) 0;
+    overflow-y: auto;
   }
 }
