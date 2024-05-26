@@ -1,30 +1,41 @@
+import React from "react";
 import Button from "./Button";
+import book from "@/assets/book.jpeg";
 import { Icon } from "@iconify/react";
 
-const BookCard = () => {
+interface BookCardType {
+  title: string;
+  year: number;
+  author: string;
+  notes: string[]
+}
+
+const BookCard: React.FC<BookCardType> = ({ title, year, author, notes }) => {
   return (
     <div className='card'>
       <div className='card-details'>
-        <div className='card-details-book'>
-          <h4 className='card-title'>The Shining</h4>
-          <p className='card-author'>Stephen King</p>
+        <div className='card-wrapper'>
+          <div className='card-wrapper-image'>
+            <img src={book} alt='book' />
+          </div>
+
+          <div className='card-details-book'>
+            <div >
+              <h4 className='card-title clamped-text'>{title}</h4>
+              <p className='card-author'>{author}</p>
+            </div>
+            <p className='card-notes clamped-text' title={notes[0]}>{notes[0]}</p>
+          </div>
         </div>
-        <p className="card-details-year">2023</p>
+
+        <p className='card-details-year'>{year}</p>
       </div>
       <div className='card-actions'>
-      
-        <Button size='small' variant='primary'>
-        <div>
-        <Icon icon={"ph:books"} className="icon-card"/>
-          <span>Read More</span>
-        </div>
-        </Button>
-      
         <Button size='small' variant='outlined'>
-        <div>
-        <Icon icon={"ph:heart"} className="icon-card"/>
-          <span>Favorite</span>
-        </div>
+          <div>
+            <Icon icon={"ph:heart"} className='icon-card' />
+            <span>Add to Bag</span>
+          </div>
         </Button>
       </div>
     </div>

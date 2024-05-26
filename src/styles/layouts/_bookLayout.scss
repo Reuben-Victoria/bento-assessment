@@ -12,17 +12,22 @@
     height: 100%;
     justify-content: center;
     align-items: center;
-    padding-top: rem(56);
+    padding-top: rem(72);
     padding-left: rem(96);
     padding-right: rem(96);
-    padding-bottom: rem(40);
+
+    @include respond-to(medium) {
+      overflow-y: auto;
+      padding-left: rem(24);
+      padding-right: rem(24);
+    }
 
     @include respond-to(small) {
-      padding-top: rem(40);
+      padding-top: rem(48);
       overflow-y: auto;
-      padding-left: rem(20);
-      padding-bottom: rem(16);
-      padding-right: rem(20);
+      padding-left: rem(16);
+      padding-bottom: rem(8);
+      padding-right: rem(16);
     }
   }
 }
