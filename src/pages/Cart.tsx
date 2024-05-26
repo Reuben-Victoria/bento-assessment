@@ -150,7 +150,7 @@ const Cart = ({ children }: { children: React.ReactNode }) => {
               }}
               size='medium'
             >
-              Continue to Payment
+              Checkout
             </Button>
           </div>
         </div>
