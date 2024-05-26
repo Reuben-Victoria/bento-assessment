@@ -10,15 +10,15 @@
   }
 
   &-cover {
-    border: 1px solid $gray-light;
     border-radius: rem(8);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     width: rem(80);
     height: rem(80);
 
-    div {
+    img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -31,6 +31,8 @@
   &-responsive {
     display: flex;
     align-items: center;
+    word-wrap: break-word;
+    margin: 0;
 
     @include respond-to(small) {
       display: grid;
@@ -41,12 +43,20 @@
   &-details {
     display: grid;
     color: $primary-dark;
+    width: 100%;
+    max-width: rem(150);
     gap: rem(4);
 
     p {
       font-size: rem(16);
       font-weight: 500;
       margin: 0;
+      word-wrap: break-word;
+      -webkit-line-clamp: 1;
+      display: -webkit-box;
+      margin: 0;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
 
       @include respond-to(small) {
         font-size: rem(14);
@@ -74,6 +84,7 @@
 
     select {
       @include cartitem-select;
+      width: rem(64) !important;
     }
 
     button {
@@ -92,7 +103,7 @@
 
     select {
       @include cartitem-select;
-      min-width: rem(64) !important;
+      width: rem(64) !important;
     }
 
     button {

@@ -7,8 +7,11 @@ import {
 } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { Cart } from "@/pages";
+import { useCartData } from "@/context";
 
 const Navbar = () => {
+    const {cartData} = useCartData()
+
   return (
     <nav className='navbar'>
       <div className='navbar-logo'>
@@ -28,8 +31,9 @@ const Navbar = () => {
                     icon='ph:handbag-fill'
                     className='navbar-list-cart-icon'
                   />
-                  <span>0</span>
+                  <span>{cartData?.length}</span>
                 </PopoverButton>
+                {open && <div className='cart-overlay'></div>}
                 <Transition
                   leave='transition ease-in duration-200'
                   leaveFrom='opacity-100 translate-y-0'

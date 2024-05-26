@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { BookCard, Pagination, RenderIf, Search } from "@/components";
 import { usePaginationHelper } from "@/hooks";
+import { useCartData } from "@/context";
 
 const SkeletonBookCard = () => {
   return (
@@ -27,6 +28,7 @@ const SkeletonBookCard = () => {
 };
 
 const BooksPage = () => {
+  const { addToCart } = useCartData();
   const spreadReducer = (state: QueryType, action: Record<string, any>) => ({
     ...state,
     ...action,
@@ -61,10 +63,12 @@ const BooksPage = () => {
               {paginateBooks?.map((books: BookType) => {
                 return (
                   <BookCard
+                    key={books?.id}
                     notes={books?.Notes}
                     title={books?.Title}
                     author={books?.Publisher}
                     year={books?.Year}
+                    addToBag={() => addToCart(books)}
                   />
                 );
               })}
