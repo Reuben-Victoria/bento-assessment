@@ -2,9 +2,7 @@ import { useGetAllBooks } from "@/hooks";
 
 export const usePaginationHelper = (query: QueryType) => {
   const { data, isPending } = useGetAllBooks(query);
-
   const page = query.page;
-  console.log(page, "PAGE")
   const pageSize = query.limit;
   const startIndex = (page - 1) * pageSize;
   const endIndex = page * pageSize;

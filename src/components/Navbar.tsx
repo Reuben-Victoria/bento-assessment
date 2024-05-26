@@ -9,8 +9,14 @@ import { motion } from "framer-motion";
 import { Cart } from "@/pages";
 import { useCartData } from "@/context";
 
+
 const Navbar = () => {
   const { cartData } = useCartData();
+
+  const totalItemsInBag = cartData?.reduce(
+    (accum, currentValue) => accum + currentValue?.quantity!,
+    0
+  );
 
   return (
     <nav className='navbar'>
@@ -31,7 +37,7 @@ const Navbar = () => {
                     icon='ph:handbag-fill'
                     className='navbar-list-cart-icon'
                   />
-                  <span>{cartData?.length}</span>
+                  <span>{totalItemsInBag}</span>
                 </PopoverButton>
                 {open && <div className='cart-overlay'></div>}
                 <Transition

@@ -2,7 +2,7 @@ import { Button, RenderIf } from "@/components";
 import book from "@/assets/book.jpeg";
 import { useCartData } from "@/context";
 import React from "react";
-import { removeDuplicatesAndAddQuantity } from "@/utils";
+
 interface CheckoutProps {
   description: string;
   price: number;
@@ -28,7 +28,6 @@ const CartItem: React.FC<CartItemProps> = ({
   const handleQuantityChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    console.log(event, "TEXT");
     updateQuantity(Number(event.target.value));
   };
   return (
@@ -49,7 +48,7 @@ const CartItem: React.FC<CartItemProps> = ({
               value={quantity}
               onChange={handleQuantityChange}
             >
-              {[...Array(5)].map((_, index) => (
+              {[...Array(10)].map((_, index) => (
                 <option key={index + 1} value={index + 1}>
                   {index + 1}
                 </option>
@@ -65,7 +64,7 @@ const CartItem: React.FC<CartItemProps> = ({
           value={quantity}
           onChange={handleQuantityChange}
         >
-          {[...Array(5)].map((_, index) => (
+          {[...Array(10)].map((_, index) => (
             <option key={index + 1} value={index + 1}>
               {index + 1}
             </option>
@@ -89,8 +88,8 @@ const Checkout: React.FC<CheckoutProps> = ({ description, price }) => {
 };
 
 const Cart = ({ children }: { children: React.ReactNode }) => {
-  const { cartData, removeFromCartData, updateCartQuantity } = useCartData();
-  console.log(cartData, "CART DRA");
+  const { cartData, removeFromCartData, updateCartQuantity, setCartData } =
+    useCartData();
   const checkoutData = [
     { description: "Subtotal", price: 30 },
     { description: "Shipping", price: 40 },
@@ -107,14 +106,14 @@ const Cart = ({ children }: { children: React.ReactNode }) => {
 
       <RenderIf condition={!!cartData.length}>
         <div className='cart-items hide-scroll-bar'>
-          {removeDuplicatesAndAddQuantity(cartData)?.map((books) => {
+          {cartData?.map((books) => {
             return (
               <CartItem
                 name={books?.Title}
                 publisher={books?.Publisher}
                 id={books?.id}
                 key={books?.id}
-                quantity={books.quantity!}
+                quantity={books?.quantity!}
                 updateQuantity={(quantity) =>
                   updateCartQuantity(books.id, quantity)
                 }
@@ -143,7 +142,14 @@ const Cart = ({ children }: { children: React.ReactNode }) => {
           </div>
 
           <div className='cart-button'>
-            <Button variant='primary' size='medium'>
+            <Button
+              variant='primary'
+              onClick={() => {
+                setCartData([]);
+                localStorage.removeItem("cartData");
+              }}
+              size='medium'
+            >
               Continue to Payment
             </Button>
           </div>

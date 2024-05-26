@@ -1,4 +1,10 @@
-import React, { createContext, useState, useMemo, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  useMemo,
+  useContext,
+  useEffect,
+} from "react";
 import { BookWithQuantityType } from "@/utils";
 
 interface CartContextType {
@@ -18,7 +24,15 @@ const CartContext = createContext<CartContextType>({
 });
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [cartData, setCartData] = useState<BookWithQuantityType[]>([]);
+  const [cartData, setCartData] = useState<BookWithQuantityType[]>(() => {
+    const savedCartData = localStorage.getItem("cartData");
+    return savedCartData ? JSON.parse(savedCartData) : [];
+  });
+
+  useEffect(() => {
+    // Save cartData to localStorage whenever the data changes
+    localStorage.setItem("cartData", JSON.stringify(cartData));
+  }, [cartData]);
 
   const removeFromCartData = (id: number) => {
     setCartData((prev) => prev.filter((item) => item.id !== id));
@@ -31,7 +45,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const addToCart = (item: BookWithQuantityType) => {
-    setCartData((prev) => [...prev, item]);
+    setCartData((prev) => {
+      const existingItem = prev.find((book) => book.id === item.id);
+      if (existingItem) {
+        return prev.map((book) =>
+          book.id === item.id ? { ...book, quantity: book.quantity! + 1 } : book
+        );
+      }
+      return [...prev, { ...item, quantity: 1 }];
+    });
   };
 
   const value = useMemo(
