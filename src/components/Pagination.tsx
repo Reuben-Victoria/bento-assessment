@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "./Button";
 
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -13,12 +12,6 @@ type Props = {
    * meta
    * @default - { page: 1 }
    */
-  meta?: any;
-  /**
-   * limit
-   * @default 10
-   */
-  limit: number;
   /**
    * on page change
    * @param page
@@ -30,22 +23,12 @@ type Props = {
 
 const Pagination = ({
   page = 1,
-  limit = 10,
-  meta,
   total_pages,
   onPageChange,
   setLimit,
 }: Props) => {
   const pages = [10, 25, 50, 100];
 
-  const pageFirst = React.useMemo(() => {
-    return (page - 1) * limit + 1;
-  }, [page, limit]);
-
-  const pageLast = React.useMemo(() => {
-    const calculated = page === 1 ? limit : page * limit;
-    return calculated <= +meta?.length ? calculated : +meta?.length;
-  }, [meta, limit, page]);
 
   return (
     <div className='pagination'>
@@ -68,7 +51,7 @@ const Pagination = ({
       </div>
       <div className='pagination-buttons'>
         <p className='pagination-page-info'>
-          {`${pageFirst} - ${isNaN(pageLast) ? 0 : pageLast}`} of{" "}
+          Page {`${page}`} of{" "}
           {isNaN(total_pages) ? 0 : total_pages}
         </p>
         <Button
