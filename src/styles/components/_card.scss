@@ -1,9 +1,10 @@
 .card {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   background-color: $white;
   display: grid;
-  grid-template-columns: minmax(200px, 1fr);
-  width: fit-content;
+  grid-template-columns: minmax(250px, 1fr);
+  width: 100%;
+  max-width: rem(350);
   box-sizing: border-box;
   gap: rem(8);
   border-radius: rem(10);
@@ -14,22 +15,18 @@
 
   &:hover {
     scale: 1.05;
+    background-color: $gray-neutral;
     cursor: pointer;
+  }
+
+  @include respond-to(large) {
+    grid-template-columns: minmax(250px, 1fr);
+    padding: rem(16);
   }
 
   @include respond-to(small) {
     grid-template-columns: 1fr;
     width: 100%;
-    padding: rem(8);
-  }
-
-  @include respond-to(medium) {
-    grid-template-columns: minmax(180px, 1fr);
-    padding: rem(12);
-  }
-
-  @include respond-to(large) {
-    grid-template-columns: minmax(220px, 1fr);
     padding: rem(12);
   }
 
@@ -38,10 +35,12 @@
     justify-content: space-between;
     align-items: start;
 
+    width: 100%;
     &-book {
-      display: grid;
-      grid-template-columns: 1;
-      column-gap: rem(12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: rem(8);
     }
     &-year {
       margin: 0;
@@ -69,23 +68,29 @@
     }
   }
 
-  &-author {
+  &-notes {
     font-size: rem(14);
-    color: $primary-dark;
+    color: $gray-dark;
     font-weight: 400;
+    word-wrap: break-word;
     margin: 0;
-
-    @include respond-to(small) {
-      font-size: rem(12);
-    }
-
-    @include respond-to(medium) {
-      font-size: rem(14);
-    }
 
     @include respond-to(large) {
       font-size: rem(14);
     }
+    @include respond-to(medium) {
+      font-size: rem(14);
+    }
+
+    @include respond-to(small) {
+      font-size: rem(12);
+    }
+  }
+
+  &-author {
+    @extend .card-notes;
+
+    color: $primary-dark;
   }
 
   &-actions {
@@ -98,8 +103,8 @@
       justify-content: space-between;
     }
 
-    button{
-      div{
+    button {
+      div {
         display: flex;
         margin: auto;
         flex-direction: row;
@@ -112,5 +117,23 @@
   .icon-card {
     font-size: large;
     font-weight: 500;
+  }
+
+  &-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: flex-start;
+    gap: rem(8);
+
+    &-image {
+      width: rem(80);
+      height: rem(80);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }

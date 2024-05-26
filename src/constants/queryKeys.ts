@@ -1,0 +1,1 @@
+export const ALL_BOOKS_KEY = "all-books"

@@ -17,6 +17,14 @@ body {
   /* Firefox */
 }
 
+.clamped-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* Number of lines to display before truncating */
+  -webkit-line-clamp: 2;
+}
+
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
   /* Safari and Chrome */
