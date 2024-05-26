@@ -1,5 +1,4 @@
-import { Button } from "@/components";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Button, RenderIf } from "@/components";
 import React from "react";
 interface CheckoutProps {
   description: string;
@@ -44,7 +43,7 @@ const Checkout: React.FC<CheckoutProps> = ({ description, price }) => {
   );
 };
 
-const Cart = () => {
+const Cart = ({children}: {children: React.ReactNode}) => {
   const checkoutData = [
     { description: "Subtotal", price: 30 },
     { description: "Shipping", price: 40 },
@@ -54,41 +53,47 @@ const Cart = () => {
     <div className='cart'>
       <div className='cart-action'>
         <h2>
-          Shopping <span>Cart</span>
+          Shopping <span className="cart-action-label">Cart</span>
         </h2>
-        <button>
-          <Icon icon={"ph:x"} />
-        </button>
+    {children}
       </div>
 
-      <div className='cart-items'>
-        <CartItem />
-      </div>
+      <RenderIf condition={true}>
+        <div className='cart-items'>
+          <CartItem />
+        </div>
 
-      <div className='cart-total'>
-        <div className='cart-checkout'>
-          {checkoutData?.map((items) => {
-            const { description, price } = items;
-            return (
-              <Checkout
-                description={description}
-                price={price}
-                key={description}
-              />
-            );
-          })}
-          <div className='cart-checkout-total'>
-            <span>Order total</span>
-            <span>$131.00</span>
+        <div className='cart-total'>
+          <div className='cart-checkout'>
+            {checkoutData?.map((items) => {
+              const { description, price } = items;
+              return (
+                <Checkout
+                  description={description}
+                  price={price}
+                  key={description}
+                />
+              );
+            })}
+            <div className='cart-checkout-total'>
+              <span>Order total</span>
+              <span>$131.00</span>
+            </div>
+          </div>
+
+          <div className='cart-button'>
+            <Button variant='primary' size='medium'>
+              Continue to Payment
+            </Button>
           </div>
         </div>
+      </RenderIf>
 
-        <div className='cart-button'>
-          <Button variant='primary' size='medium'>
-            Continue to Payment
-          </Button>
-        </div>
-      </div>
+      <RenderIf condition={false}>
+        <p className='cart-empty'>
+          Shopping <span>Cart</span> is empty!
+        </p>
+      </RenderIf>
     </div>
   );
 };

@@ -64,19 +64,24 @@
       align-items: center;
       list-style: none;
 
+  
+    }
+
+    &-cart {
+      gap: rem(8);
+      display: flex;
+      align-items: center;
+      color: $primary-color;
+      font-weight: 500;
+      background-color: white;
+      border: none;
+      transition: color 0.3s ease;
+
       span {
         color: $primary-dark;
         font-size: rem(16);
         font-weight: 500;
       }
-    }
-
-    &-cart {
-      gap: rem(8);
-      color: $primary-color;
-      align-items: start;
-      font-weight: 500;
-      transition: color 0.3s ease;
 
       &-icon {
         cursor: pointer;
