@@ -85,8 +85,6 @@
       &-icon {
         cursor: pointer;
         font-size: x-large;
-
-    
       }
 
       span {
@@ -101,8 +99,10 @@
 .cart-overlay {
   position: fixed;
   top: rem(72);
+  left: 0;
+  right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.3); // Semi-transparent background
-  backdrop-filter: blur(3px); // Adjust the blur amount as needed
   z-index: 10; // Ensure it is behind the modal but above other content
+  background-color: rgba(255, 255, 255, 0.3); // Semi-transparent background
+  backdrop-filter: blur(3px); 
 }
