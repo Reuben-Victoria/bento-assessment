@@ -77,8 +77,6 @@ const BooksPage = () => {
               page={query.page}
               total_pages={totalPages}
               onPageChange={(page) => setQuery({ page })}
-              meta={paginateBooks}
-              limit={query.limit}
               setLimit={(limit) => setQuery({ limit })}
             />
           </RenderIf>

@@ -12,12 +12,6 @@ type Props = {
    * meta
    * @default - { page: 1 }
    */
-  meta?: any;
-  /**
-   * limit
-   * @default 10
-   */
-  limit: number;
   /**
    * on page change
    * @param page
@@ -29,7 +23,6 @@ type Props = {
 
 const Pagination = ({
   page = 1,
-  limit = 10,
   total_pages,
   onPageChange,
   setLimit,
