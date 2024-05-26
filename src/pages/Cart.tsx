@@ -145,8 +145,9 @@ const Cart = ({ children }: { children: React.ReactNode }) => {
             <Button
               variant='primary'
               onClick={() => {
-                setCartData([]);
                 localStorage.removeItem("cartData");
+                setCartData([]);
+            
               }}
               size='medium'
             >
