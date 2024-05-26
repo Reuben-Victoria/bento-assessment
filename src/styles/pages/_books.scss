@@ -1,0 +1,49 @@
+.books {
+  display: grid;
+  width: 100%;
+  gap: rem(40);
+
+  &-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      color: $primary-dark;
+      font-size: rem(16);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    @include respond-to(small) {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: rem(12);
+      width: 100%;
+    }
+  }
+
+  &-search {
+    max-width: 40%;
+    width: 100%;
+
+    @include respond-to(small) {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  &-content {
+    min-height: 68vh;
+    height: 100%;
+
+    @include respond-to(small) {
+      min-height: 65vh;
+    }
+
+    &-main {
+      min-height: rem(360);
+      overflow-y: auto;
+      height: 100%;
+    }
+  }
+}
