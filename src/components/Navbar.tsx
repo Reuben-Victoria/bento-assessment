@@ -10,7 +10,7 @@ import { Cart } from "@/pages";
 import { useCartData } from "@/context";
 
 const Navbar = () => {
-    const {cartData} = useCartData()
+  const { cartData } = useCartData();
 
   return (
     <nav className='navbar'>

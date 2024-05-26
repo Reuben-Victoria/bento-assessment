@@ -55,7 +55,7 @@ const CartItem: React.FC<CartItemProps> = ({
                 </option>
               ))}
             </select>
-            <button>Remove</button>
+            <button onClick={removeFromCart}>Remove</button>
           </div>
         </div>
       </div>
