@@ -1,5 +1,4 @@
 import { Button, RenderIf } from "@/components";
-import book from "@/assets/book.jpeg";
 import { useCartData } from "@/context";
 import React from "react";
 
@@ -34,7 +33,7 @@ const CartItem: React.FC<CartItemProps> = ({
     <div className='cartitem'>
       <div className='cartitem-container'>
         <div className='cartitem-cover'>
-          <img src={book} alt='book-jpeg' />
+          <img src={"./book.jpeg"} alt='book-jpeg' />
         </div>
         <div className='cartitem-responsive'>
           <div className='cartitem-details'>
