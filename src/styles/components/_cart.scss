@@ -1,7 +1,6 @@
 .cart-modal {
   z-index: 9998;
   position: absolute;
-  background-color: $white;
   min-height: rem(580);
   top: rem(73);
   width: 40%;
@@ -18,8 +17,9 @@
 
   @include respond-to(small) {
     right: 0;
+    background-color: $white;
     left: 0;
-    height: fit-content;
+    height: 100%;
     top: rem(65);
     bottom: 0;
   }
@@ -36,16 +36,16 @@
   height: 100%;
   box-sizing: border-box;
   display: grid;
-  gap: rem(40);
+  gap: rem(32);
 
   @include respond-to(medium) {
     max-width: 100%;
     padding: rem(20) rem(20);
     gap: rem(36);
     border: none;
+    height: 100%;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid $gray-light;
-    box-shadow: none;
   }
 
   @include respond-to(small) {
@@ -61,6 +61,7 @@
   &-action {
     display: flex;
     justify-content: space-between;
+    height: fit-content;
     align-items: center;
 
     h2 {
@@ -87,6 +88,7 @@
       padding: rem(4) rem(4);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       display: grid;
+      height: fit-content;
       place-content: center;
       background-color: $white;
       font-size: medium;
@@ -156,9 +158,13 @@
   &-empty {
     color: $primary-dark;
     padding-bottom: rem(56);
-    margin: 0;
     font-weight: 500;
+    padding-top: rem(12);
     text-align: center;
+
+    @include respond-to(small) {
+      padding-top: 0;
+    }
 
     span {
       color: $primary-color;

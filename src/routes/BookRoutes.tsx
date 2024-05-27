@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { BOOK_HOMEPAGE_ROUTE } from "@/constants";
+import { BOOK_HOMEPAGE_ROUTE, VIEW_BOOK_ROUTE } from "@/constants";
 import { BookLayout } from "@/layouts";
-import { BooksPage } from "@/pages";
+import { BooksPage, SingleBook } from "@/pages";
 
 const BookRoutes = () => {
   return (
@@ -14,6 +14,14 @@ const BookRoutes = () => {
             </BookLayout>
           }
           path={BOOK_HOMEPAGE_ROUTE}
+        />
+          <Route
+          element={
+            <BookLayout>
+              <SingleBook />
+            </BookLayout>
+          }
+          path={VIEW_BOOK_ROUTE}
         />
       </Routes>
     </BrowserRouter>
