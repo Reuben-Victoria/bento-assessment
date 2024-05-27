@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Popover,
@@ -15,21 +15,38 @@ const Navbar = () => {
   const { cartData } = useCartData();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const modalRef = useRef(null!);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      modalRef.current &&
+      !(modalRef.current as HTMLDivElement).contains(event.target as Node)
+    ) {
+      setIsOpen(false);
+    }
+  };
 
   useEffect(() => {
+    const handleGlobalClick = (event: MouseEvent) => {
+      handleClickOutside(event);
+    };
+
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.addEventListener("mousedown", handleGlobalClick);
     } else {
       document.body.style.overflow = "unset";
+      document.removeEventListener("mousedown", handleGlobalClick);
     }
 
     return () => {
       document.body.style.overflow = "unset";
+      document.removeEventListener("mousedown", handleGlobalClick);
     };
   }, [isOpen]);
 
   const totalItemsInBag = cartData?.reduce(
-    (accum, currentValue) => accum + currentValue?.quantity!,
+    (accum, currentValue) => accum + (currentValue?.quantity! ?? 0),
     0
   );
 
@@ -74,6 +91,7 @@ const Navbar = () => {
                       y: "20%",
                       transition: { duration: 0.3 },
                     }}
+                    ref={modalRef}
                     className='cart-modal'
                   >
                     <Cart>
