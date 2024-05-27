@@ -179,5 +179,10 @@
     gap: rem(12);
     padding: rem(8) 0;
     overflow-y: auto;
+
+    @include respond-to(small) {
+      height: 100%;
+      padding: rem(16) 0;
+    }
   }
 }
