@@ -24,8 +24,10 @@ yarn install
 
 Node commands for respective repositories can be run from the root directory. Under the scripts section in the `package.json` of the root directory.
 
-- The project can be started with ```bash
-  yarn run dev ```
+- The project can be started with 
+```bash
+  yarn run dev 
+```
 
 ## Project Structure 📦
 
