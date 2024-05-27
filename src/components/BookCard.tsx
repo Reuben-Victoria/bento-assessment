@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "./Button";
-import book from "@/assets/book.jpeg";
 import { Icon } from "@iconify/react";
 
 interface BookCardType {
@@ -11,13 +10,19 @@ interface BookCardType {
   addToBag: () => void;
 }
 
-const BookCard: React.FC<BookCardType> = ({ title, year, author, notes, addToBag }) => {
+const BookCard: React.FC<BookCardType> = ({
+  title,
+  year,
+  author,
+  notes,
+  addToBag,
+}) => {
   return (
     <div className='card'>
       <div className='card-details'>
         <div className='card-wrapper'>
           <div className='card-wrapper-image'>
-            <img src={book} alt='book' />
+            <img src={"./book.jpeg"} alt='book' />
           </div>
 
           <div className='card-details-book'>

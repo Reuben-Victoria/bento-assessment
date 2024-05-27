@@ -1,5 +1,4 @@
 import { Button, RenderIf } from "@/components";
-import book from "@/assets/book.jpeg";
 import { useCartData } from "@/context";
 import React from "react";
 
@@ -13,6 +12,7 @@ interface CartItemProps {
   publisher: string;
   removeFromCart: () => void;
   quantity: number;
+  price: number;
   id: number;
   updateQuantity: (quantity: number) => void;
 }
@@ -23,6 +23,7 @@ const CartItem: React.FC<CartItemProps> = ({
   id,
   removeFromCart,
   quantity,
+  price,
   updateQuantity,
 }) => {
   const handleQuantityChange = (
@@ -34,7 +35,7 @@ const CartItem: React.FC<CartItemProps> = ({
     <div className='cartitem'>
       <div className='cartitem-container'>
         <div className='cartitem-cover'>
-          <img src={book} alt='book-jpeg' />
+          <img src={"./book.jpeg"} alt='book-jpeg' />
         </div>
         <div className='cartitem-responsive'>
           <div className='cartitem-details'>
@@ -73,7 +74,7 @@ const CartItem: React.FC<CartItemProps> = ({
         <button onClick={removeFromCart}>Remove</button>
       </div>
 
-      <p className='cartitem-price'>$140.00</p>
+      <p className='cartitem-price'>${price}.00</p>
     </div>
   );
 };
@@ -90,8 +91,14 @@ const Checkout: React.FC<CheckoutProps> = ({ description, price }) => {
 const Cart = ({ children }: { children: React.ReactNode }) => {
   const { cartData, removeFromCartData, updateCartQuantity, setCartData } =
     useCartData();
+
+  const totalPrice = cartData?.reduce(
+    (accum, item) => accum + item?.price! * item?.quantity!,
+    0
+  );
+
   const checkoutData = [
-    { description: "Subtotal", price: 30 },
+    { description: "Subtotal", price: totalPrice },
     { description: "Shipping", price: 40 },
     { description: "Tax", price: 80 },
   ];
@@ -107,12 +114,14 @@ const Cart = ({ children }: { children: React.ReactNode }) => {
       <RenderIf condition={!!cartData.length}>
         <div className='cart-items hide-scroll-bar'>
           {cartData?.map((books) => {
+            const pricePerItem = books?.price! * books?.quantity!;
             return (
               <CartItem
                 name={books?.Title}
                 publisher={books?.Publisher}
                 id={books?.id}
                 key={books?.id}
+                price={pricePerItem}
                 quantity={books?.quantity!}
                 updateQuantity={(quantity) =>
                   updateCartQuantity(books.id, quantity)
@@ -137,7 +146,7 @@ const Cart = ({ children }: { children: React.ReactNode }) => {
             })}
             <div className='cart-checkout-total'>
               <span>Order total</span>
-              <span>$131.00</span>
+              <span>${totalPrice + 40 + 80}.00</span>
             </div>
           </div>
 
@@ -147,7 +156,6 @@ const Cart = ({ children }: { children: React.ReactNode }) => {
               onClick={() => {
                 localStorage.removeItem("cartData");
                 setCartData([]);
-            
               }}
               size='medium'
             >

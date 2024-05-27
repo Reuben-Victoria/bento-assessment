@@ -1,5 +1,6 @@
 export type BookWithQuantityType = BookType & {
   quantity?: number;
+  price?: number;
 };
 
 export const removeDuplicatesAndAddQuantity = (

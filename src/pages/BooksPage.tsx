@@ -38,7 +38,8 @@ const BooksPage = () => {
     search: "",
     limit: 10,
   }));
-  const { paginateBooks, totalPages, isPending } = usePaginationHelper(query);
+  const { paginateBooks, totalPages, isPending, filteredData } =
+    usePaginationHelper(query);
   return (
     <div className='books'>
       <div className='books-filter'>
@@ -58,20 +59,24 @@ const BooksPage = () => {
           </div>
         </RenderIf>
         <RenderIf condition={!isPending}>
-          <RenderIf condition={paginateBooks?.length! > 0}>
+          <RenderIf
+            condition={!!paginateBooks?.length! || !!filteredData?.length!}
+          >
             <div className='books-content-main'>
-              {paginateBooks?.map((books: BookType) => {
-                return (
-                  <BookCard
-                    key={books?.id}
-                    notes={books?.Notes}
-                    title={books?.Title}
-                    author={books?.Publisher}
-                    year={books?.Year}
-                    addToBag={() => addToCart(books)}
-                  />
-                );
-              })}
+              {(query?.search ? filteredData : paginateBooks)?.map(
+                (books: BookType) => {
+                  return (
+                    <BookCard
+                      key={books?.id}
+                      notes={books?.Notes}
+                      title={books?.Title}
+                      author={books?.Publisher}
+                      year={books?.Year}
+                      addToBag={() => addToCart(books)}
+                    />
+                  );
+                }
+              )}
             </div>
             <Pagination
               page={query.page}
@@ -82,7 +87,7 @@ const BooksPage = () => {
           </RenderIf>
         </RenderIf>
 
-        <RenderIf condition={!paginateBooks?.length! && !isPending}>
+        <RenderIf condition={!paginateBooks?.length! && !isPending && !filteredData?.length}>
           <p className='books-not-found'>
             No book <span>found!</span>
           </p>
