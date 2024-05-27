@@ -1,6 +1,7 @@
 .cart-modal {
   z-index: 9998;
   position: absolute;
+  background-color: $white;
   min-height: rem(580);
   top: rem(73);
   width: 40%;
