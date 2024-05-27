@@ -79,26 +79,32 @@ const ViewBook = () => {
               <span>{data?.Year}</span>
               <span>{data?.ISBN}</span>
             </div>
-            <p className='view-notes'>
-              {data?.Notes[0] !== ""
-                ? data?.Notes?.map((notes) => {
-                    return <span>{notes}</span>;
-                  })
-                : "---"}
-            </p>
+
+            {data?.Notes[0] !== "" ? (
+              <p className='view-notes'>
+                {" "}
+                {data?.Notes?.map((notes) => {
+                  return <span>{notes}</span>;
+                })}{" "}
+              </p>
+            ) : null}
+
             <div className='view-stock'>
               <Icon icon={"ph:check-bold"} className='view-stock-icon' />
               <p>In stock and ready to ship</p>
             </div>
 
-            <div className='view-villains'>
-              <h4>Villains</h4>
-              <div className='view-tags'>
-                {data?.villains?.map((items, index) => {
-                  return <Tags tag={items?.name} key={index} />;
-                })}
+            {data?.villains?.length ? (
+              <div className='view-villains'>
+                <h4>Villains</h4>
+
+                <div className='view-tags'>
+                  {data?.villains?.map((items, index) => {
+                    return <Tags tag={items?.name} key={index} />;
+                  })}
+                </div>
               </div>
-            </div>
+            ) : null}
             <Button
               variant='primary'
               size='medium'
