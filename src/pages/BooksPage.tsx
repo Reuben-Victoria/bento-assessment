@@ -68,10 +68,7 @@ const BooksPage = () => {
                   return (
                     <BookCard
                       key={books?.id}
-                      notes={books?.Notes}
-                      title={books?.Title}
-                      author={books?.Publisher}
-                      year={books?.Year}
+                      books={books}
                       addToBag={() => addToCart(books)}
                     />
                   );
@@ -87,7 +84,11 @@ const BooksPage = () => {
           </RenderIf>
         </RenderIf>
 
-        <RenderIf condition={!paginateBooks?.length! && !isPending && !filteredData?.length}>
+        <RenderIf
+          condition={
+            !paginateBooks?.length! && !isPending && !filteredData?.length
+          }
+        >
           <p className='books-not-found'>
             No book <span>found!</span>
           </p>

@@ -7,7 +7,6 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   size?: "small" | "medium" | "large";
   disabled?: boolean;
   className?: string;
-  onClick?: () => void;
   [x: string]: any;
 }
 
@@ -17,7 +16,6 @@ const Button: React.FC<ButtonProps> = ({
   className,
   size = "medium",
   disabled,
-  onClick,
   ...props
 }) => {
   const buttonClass = classNames("button", className, {
@@ -33,7 +31,6 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={buttonClass}
-      onClick={onClick}
       disabled={disabled}
       {...props}
     >
