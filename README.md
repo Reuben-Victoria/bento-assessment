@@ -73,22 +73,22 @@ Styles folder typically contains the apps styles files:
 
 ### Thoughts
 
-- **_ Initial Approach _** : Broke down tasks into manageable parts and focused on component reusability and consistent styling with SCSS.
-- **_ Component Reusability _** : Ensured components were reusable to maintain a scalable codebase.
-- **_ Styling Consistency _**: Focused on maintaining a uniform look and feel through consistent styling.
+- _ Initial Approach _** : Broke down tasks into manageable parts and focused on component reusability and consistent styling with SCSS.
+- _ Component Reusability _ : Ensured components were reusable to maintain a scalable codebase.
+- _ Styling Consistency _: Focused on maintaining a uniform look and feel through consistent styling.
 
 ### Assumptions
 
-- **_ Data Structure _** : Assumed the API data structure would remain consistent as documented.
-- **_ Responsive Design _** : Assumed the need for a fully responsive application, emphasizing media queries and flexible layouts.
-- **_ Browser Compatibility _** : Optimized for modern browsers, not focusing on older ones.
+- _ Data Structure _ : Assumed the API data structure would remain consistent as documented.
+-  _ Responsive Design _ : Assumed the need for a fully responsive application, emphasizing media queries and flexible layouts.
+- _ Browser Compatibility _ : Optimized for modern browsers, not focusing on older ones.
 
 ### Issues Faced
 
-- **_ API Integration _**: Encountered challenges with data handling from the API, resolved through robust error handling.
-- **_ Styling Synchronization _** : Fixed asynchronous pulsating animations in the skeleton loader by standardizing animation properties.
-- **_ TypeScript Errors _**: Addressed type issues especially in the `BookCard` component by refining type definitions and ensuring correct data types.
-- **_ Responsive Design _**: Achieved consistent layout through iterative testing and adjustments using media queries and flexbox.
+- _ API Integration _: Encountered challenges with data handling from the API, resolved through robust error handling.
+- _ Styling Synchronization _ : Fixed asynchronous pulsating animations in the skeleton loader by standardizing animation properties.
+- _ TypeScript Errors _: Addressed type issues especially in the `BookCard` component by refining type definitions and ensuring correct data types.
+- _ Responsive Design _: Achieved consistent layout through iterative testing and adjustments using media queries and flexbox.
 
 ## Thanks
 
