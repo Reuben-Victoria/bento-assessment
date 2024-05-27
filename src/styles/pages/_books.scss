@@ -17,9 +17,13 @@
     justify-content: space-between;
     h2 {
       color: $primary-dark;
-      font-size: rem(20);
-      font-weight: 500;
+      font-size: rem(28);
+      font-weight: 600;
       margin: 0;
+
+      @include respond-to(small) {
+        font-size: rem(24);
+      }
     }
 
     @include respond-to(small) {

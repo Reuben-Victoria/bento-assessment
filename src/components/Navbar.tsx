@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
 import {
   Popover,
   PopoverButton,
@@ -9,9 +10,9 @@ import { motion } from "framer-motion";
 import { Cart } from "@/pages";
 import { useCartData } from "@/context";
 
-
 const Navbar = () => {
   const { cartData } = useCartData();
+  const navigate = useNavigate();
 
   const totalItemsInBag = cartData?.reduce(
     (accum, currentValue) => accum + currentValue?.quantity!,
@@ -20,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav className='navbar'>
-      <div className='navbar-logo'>
+      <div className='navbar-logo' onClick={() => navigate("/")}>
         <Icon icon={"ph:book-fill"} className='navbar-logo-icon' />
         <h1>
           Book <span>Inc</span>
