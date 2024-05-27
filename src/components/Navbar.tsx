@@ -17,13 +17,15 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!!isOpen) {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
       document.body.style.overflow = "unset";
     }
 
-    if (typeof window != "undefined" && window.document && !isOpen) {
-      document.body.style.overflow = "hidden";
-    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isOpen]);
 
   const totalItemsInBag = cartData?.reduce(
@@ -48,7 +50,7 @@ const Navbar = () => {
                 <PopoverButton
                   as='div'
                   className='navbar-list-cart'
-                  onClick={() => setIsOpen(open)}
+                  onClick={() => setIsOpen(!open)}
                 >
                   <Icon
                     icon='ph:handbag-fill'
@@ -75,7 +77,7 @@ const Navbar = () => {
                     className='cart-modal'
                   >
                     <Cart>
-                      <PopoverButton onClick={() => setIsOpen(open)}>
+                      <PopoverButton onClick={() => setIsOpen(!open)}>
                         <Icon icon={"ph:x"} />
                       </PopoverButton>
                     </Cart>
