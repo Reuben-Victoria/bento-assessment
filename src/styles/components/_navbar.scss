@@ -32,6 +32,10 @@
     justify-content: space-between;
     color: $primary-dark;
 
+    &:hover {
+      opacity: 80%;
+    }
+
     h1 {
       margin: 0;
       font-size: x-large;
@@ -90,6 +94,10 @@
       &-icon {
         cursor: pointer;
         font-size: x-large;
+
+        &:hover{
+          color: $primary-light;
+        }
       }
 
       span {

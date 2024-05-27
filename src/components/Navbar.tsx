@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Popover,
@@ -12,7 +13,18 @@ import { useCartData } from "@/context";
 
 const Navbar = () => {
   const { cartData } = useCartData();
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!!isOpen) {
+      document.body.style.overflow = "unset";
+    }
+
+    if (typeof window != "undefined" && window.document && !isOpen) {
+      document.body.style.overflow = "hidden";
+    }
+  }, [isOpen]);
 
   const totalItemsInBag = cartData?.reduce(
     (accum, currentValue) => accum + currentValue?.quantity!,
@@ -33,7 +45,11 @@ const Navbar = () => {
           <Popover className='relative'>
             {({ open }) => (
               <>
-                <PopoverButton as='div' className='navbar-list-cart'>
+                <PopoverButton
+                  as='div'
+                  className='navbar-list-cart'
+                  onClick={() => setIsOpen(open)}
+                >
                   <Icon
                     icon='ph:handbag-fill'
                     className='navbar-list-cart-icon'
@@ -59,7 +75,7 @@ const Navbar = () => {
                     className='cart-modal'
                   >
                     <Cart>
-                      <PopoverButton>
+                      <PopoverButton onClick={() => setIsOpen(open)}>
                         <Icon icon={"ph:x"} />
                       </PopoverButton>
                     </Cart>
