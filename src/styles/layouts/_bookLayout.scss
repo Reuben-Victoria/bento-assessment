@@ -16,10 +16,16 @@
     padding-left: rem(96);
     padding-right: rem(96);
 
+    @include respond-to(large) {
+      overflow-y: auto;
+      padding-left: rem(40);
+      padding-right: rem(40);
+    }
+
     @include respond-to(medium) {
       overflow-y: auto;
-      padding-left: rem(24);
-      padding-right: rem(24);
+      padding-left: rem(36);
+      padding-right: rem(36);
     }
 
     @include respond-to(small) {

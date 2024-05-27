@@ -12,6 +12,10 @@
   border-bottom: 1px solid $gray-light;
   padding: rem(8) rem(64);
 
+  @include respond-to(large) {
+    padding: rem(8) rem(32);
+  }
+
   @include respond-to(medium) {
     padding: rem(8) rem(32);
   }
@@ -24,6 +28,7 @@
     display: flex;
     align-items: center;
     gap: rem(4);
+    cursor: pointer;
     justify-content: space-between;
     color: $primary-dark;
 

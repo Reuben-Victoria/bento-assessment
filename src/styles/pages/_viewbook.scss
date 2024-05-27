@@ -1,0 +1,386 @@
+.view {
+  display: grid;
+  place-items: center;
+  height: fit-content;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 rem(32);
+  margin: 0;
+
+  @include respond-to(large) {
+    grid-template-columns: 1fr;
+    padding: 0 rem(40);
+    gap: rem(40);
+  }
+
+  @include respond-to(medium) {
+    grid-template-columns: 1fr;
+    padding: 0 rem(40);
+    gap: rem(16);
+  }
+
+  @include respond-to(small) {
+    grid-template-columns: 1fr;
+    padding: rem(4);
+    gap: rem(16);
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: rem(24);
+    max-width: 100%;
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+
+    @include respond-to(small) {
+      gap: rem(20);
+    }
+  }
+
+  &-notes {
+    font-size: rem(16);
+    color: $gray-dark;
+    line-height: 2;
+    width: 100%;
+    margin: 0;
+
+    @include respond-to(small) {
+      font-size: rem(14);
+      line-height: 1.5;
+    }
+  }
+
+  &-stock {
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+    margin: 0;
+
+    &-icon {
+      color: $success-color;
+      font-size: large;
+      width: rem(24);
+      height: rem(24);
+    }
+
+    p {
+      color: $gray-dark;
+      font-size: rem(14);
+      margin: 0;
+
+      @include respond-to(small) {
+        font-size: rem(12);
+      }
+    }
+  }
+
+  &-name {
+    font-size: rem(28);
+    color: $primary-dark;
+    font-weight: 600;
+    margin: 0;
+
+    @include respond-to(small) {
+      font-size: rem(24);
+    }
+  }
+
+  button {
+    text-align: center;
+  }
+
+  &-rating {
+    &-icons {
+      display: flex;
+      align-items: center;
+      color: $primary-color;
+      font-size: large;
+    }
+  }
+
+  &-review {
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+
+    p {
+      margin: 0;
+      font-size: rem(16);
+      color: $primary-dark;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: rem(4);
+      span {
+        color: $gray-dark;
+        font-size: rem(14);
+
+        @include respond-to(small) {
+          font-size: rem(12);
+        }
+      }
+    }
+  }
+
+  &-image {
+    width: 80%;
+    height: auto;
+    @include respond-to(medium) {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include respond-to(small) {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-villains {
+    display: grid;
+    gap: rem(8);
+
+    h4 {
+      margin: 0;
+      font-size: large;
+      color: $primary-dark;
+    }
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: rem(8);
+  }
+
+  &-guarantee {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+
+    &-icon {
+      color: $gray-dark;
+      font-size: large;
+      width: rem(24);
+      height: rem(24);
+    }
+
+    p {
+      margin: 0;
+      color: $gray-dark;
+
+      @include respond-to(small) {
+        font-size: rem(14);
+      }
+    }
+  }
+
+  &-publisher {
+    display: flex;
+    align-items: center;
+    gap: rem(12);
+    margin: 0;
+
+    span {
+      color: $gray-dark;
+      font-size: rem(14);
+    }
+
+    &-name {
+      color: $primary-dark;
+      font-size: rem(14);
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+}
+
+.tag {
+  border: 1px solid $gray-light;
+  border-radius: rem(4);
+  font-size: rem(14);
+  padding: rem(4) rem(8);
+  color: $gray-dark;
+
+  @include respond-to(small) {
+    font-size: rem(12);
+    padding: rem(4) rem(8);
+  }
+}
+
+.skeleton-view-book {
+  display: flex;
+  width: 80%;
+  height: fit-content;
+  gap: 20px;
+
+  @include respond-to(medium) {
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  @include respond-to(small) {
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  &-info {
+    flex: 1;
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    gap: 10px;
+
+    @include respond-to(medium) {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      flex-grow: 1;
+    }
+
+    @include respond-to(small) {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      flex-grow: 1;
+    }
+
+    .skeleton-line {
+      background-color: $gray-light;
+      border-radius: 4px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    .skeleton-view-book-name {
+      height: 24px;
+      width: 60%;
+    }
+
+    .skeleton-view-book-review {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .skeleton-view-book-price {
+        height: 20px;
+        width: 40px;
+      }
+
+      .skeleton-view-book-rating {
+        display: flex;
+        gap: 5px;
+
+        .skeleton-view-book-rating-stars,
+        .skeleton-view-book-rating-reviews {
+          height: 20px;
+        }
+
+        .skeleton-view-book-rating-stars {
+          width: 100px;
+        }
+
+        .skeleton-view-book-rating-reviews {
+          width: 80px;
+        }
+      }
+    }
+
+    .skeleton-view-book-publisher,
+    .skeleton-view-book-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .skeleton-line {
+        height: 16px;
+        width: 100%;
+      }
+    }
+
+    .skeleton-view-book-stock,
+    .skeleton-view-book-guarantee {
+      height: 20px;
+      width: 50%;
+    }
+
+    .skeleton-view-book-villains {
+      .skeleton-view-book-villains-title {
+        height: 20px;
+        width: 30%;
+      }
+
+      .skeleton-view-book-villains-tags {
+        display: flex;
+        gap: 5px;
+
+        .skeleton-line {
+          height: 20px;
+          width: 50px;
+        }
+      }
+    }
+
+    .skeleton-view-book-button {
+      height: 40px;
+      width: 100px;
+    }
+  }
+
+  &-image {
+    flex: 0 0 300px;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: $gray-neutral;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: $gray-light;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-color: $gray-neutral;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: $gray-light;
+  }
+}
