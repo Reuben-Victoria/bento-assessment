@@ -10,6 +10,7 @@
     flex-direction: column;
     flex-grow: 1;
     height: 100%;
+    overflow-x: hidden;
     justify-content: center;
     align-items: center;
     padding-top: rem(72);
@@ -18,12 +19,14 @@
 
     @include respond-to(large) {
       overflow-y: auto;
+      overflow-x: hidden;
       padding-left: rem(40);
       padding-right: rem(40);
     }
 
     @include respond-to(medium) {
       overflow-y: auto;
+      overflow-x: hidden;
       padding-left: rem(36);
       padding-right: rem(36);
     }
@@ -31,6 +34,7 @@
     @include respond-to(small) {
       padding-top: rem(48);
       overflow-y: auto;
+      overflow-x: hidden;
       padding-left: rem(16);
       padding-bottom: rem(8);
       padding-right: rem(16);
