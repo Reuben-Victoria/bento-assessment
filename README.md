@@ -1,30 +1,74 @@
-# React + TypeScript + Vite
+<p align="center">
+  <a href="https://github.com/Reuben-Victoria/bento-assessment">
+  <img src="./book.jpeg" alt="Online Book Store" width="200">
+  </a>
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">
+  Online Book Store
+</h3>
 
-Currently, two official plugins are available:
+<p align="center">
+  Bento assesment.
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+### Project Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Clone this repo to your local machine and install the dependencies.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Node commands for respective repositories can be run from the root directory. Under the scripts section in the `package.json` of the root directory.
+
+- The project can be started with ```bash
+  yarn run dev ```
+
+## Project Structure 📦
+
+### Component Folder
+
+Components folder typically contains the apps component files:
+
+```bash
+index.ts
+demo.tsx            # component source code
+````
+
+for `index.ts` components are exported from this file.
+
+### Pages Folder
+
+Pages folder typically contains the apps cpages files:
+
+```bash
+index.ts
+demo.tsx            # Pages source code
+```
+
+for `index.ts` pages are exported from this file.
+
+### Layout Folder
+
+Layouts folder typically contains the apps layouts files:
+
+```bash
+index.ts
+demo.tsx            # Layout source code
+```
+
+for `index.ts` layouts are exported from this file.
+
+## Code Style 🧑🏽‍💻
+
+The code was styled with SCSS.
+
+Styles folder typically contains the apps styles files:
+
+
+## Thanks
+
+Thank you! 🎉
