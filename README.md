@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Reuben-Victoria/bento-assessment">
-  <img src="./book.jpeg" alt="Online Book Store" width="200">
+  <img src="./public/book.jpeg" alt="Online Book Store" width="200">
   </a>
 </p>
 

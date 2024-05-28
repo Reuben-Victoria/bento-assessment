@@ -11,6 +11,15 @@
   padding: 0 rem(36);
   margin: 0;
 
+  @include respond-to(xlarge) {
+    display: grid;
+    width: 80%;
+    grid-template-columns: 1fr;
+    padding: 0 rem(64);
+    gap: rem(40);
+  }
+
+
   @include respond-to(large) {
     display: grid;
     width: 100%;

@@ -80,6 +80,11 @@
       grid-template-columns: repeat(3, 1fr);
       gap: rem(24);
 
+      @include respond-to(xlarge) {
+        grid-template-columns: repeat(4, 1fr);
+        padding: rem(8) rem(8);
+      }
+
       @include respond-to(large) {
         grid-template-columns: repeat(2, 1fr);
         padding: rem(8) rem(8);
